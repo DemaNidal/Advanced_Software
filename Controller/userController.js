@@ -1,14 +1,14 @@
 const userModel = require('../Models/userModel');
 
 function addUser(req, res) {
-    const { name, pass, address, phone, alerts, sustainability, score } = req.body;
+    const { name, air_quality_threshold, temperature_threshold, humidity_threshold, water_quality_threshold, location, sustainability_score } = req.body;
 
-    userModel.addNewUser(name, pass, address, phone, alerts, sustainability, score, (err, data_id) => {
+    userModel.addNewUser(name, air_quality_threshold, temperature_threshold, humidity_threshold, water_quality_threshold, location, sustainability_score, (err, data_id) => {
         if (err) {
             return res.status(500).json({ error: 'Internal Server Error' });
         }
 
-        res.status(201).json({ data_id, message: 'user added successfully' });
+        res.status(201).json({ message: 'user added successfully' });
         console.log('Received Request Body:', req.body);
     });
 }

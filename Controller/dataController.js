@@ -1,9 +1,9 @@
 const dataModel = require('../Models/dataModel');
 
 function addData(req, res) {
-    const { location, dateANDtime, source, content } = req.body;
+    const { user_id, date_time, location, source, air_quality, temperature, humidity, water_quality } = req.body;
   
-    dataModel.addNewData(location, dateANDtime, source, content, (err, data_id) => {
+    dataModel.addNewData(user_id, date_time, location, source, air_quality, temperature, humidity, water_quality, (err, data_id) => {
       if (err) {
         return res.status(500).json({ error: 'Internal Server Error' });
       }
@@ -13,19 +13,33 @@ function addData(req, res) {
     });
   }
 
-  function viewData(req, res) {
+
+////////////////////////////////////////////////////////////////////
+function viewData(req, res) {
   
-    const alldata = dataModel.viewAllData((err, result) => {
-        if (err) {
-          return res.status(500).json({ error: 'Internal Server Error' });
-        }
-        res.json({ data: result });
-      }); 
-  }
+  const alldata = dataModel.viewAllData((err, result) => {
+      if (err) {
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+      res.json({ data: result });
+    }); 
+}
+
+//////////////////////////////////////////////////////////////////////
+// function editData(req, res) {
   
+//   const alldata = dataModel.editTheData((err, result) => {
+//       if (err) {
+//         return res.status(500).json({ error: 'Internal Server Error' });
+//       }
+//       res.json({ data: result });
+//     }); 
+// }
+
   module.exports = {
     addData,
     viewData,
+    // editData,
     // Other controller functions...
   };
 

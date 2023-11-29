@@ -1,9 +1,9 @@
 const db = require('../dbConnection');
 
-function addNewData(location, dateANDtime, source, content, callback){
+function addNewData(user_id, date_time, location, source, air_quality, temperature, humidity, water_quality, callback){
 
-    const sql = 'INSERT INTO data (location, dateANDtime, source, content) VALUES (?, ?, ?, ?)';
-    db.query(sql, [location, dateANDtime, source, content], (err, result) => {
+    const sql = 'INSERT INTO data (user_id, date_time, location, source, air_quality, temperature, humidity, water_quality) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    db.query(sql, [user_id, date_time, location, source, air_quality, temperature, humidity, water_quality], (err, result) => {
     if (err) {
         console.error('Database error:', err);
         return callback(err, null);
@@ -24,6 +24,19 @@ function viewAllData(callback){
     callback(null, result); // Return the ID of the newly inserted record
   });
 }
+
+// function editTheData(callback){
+
+//   const sql = 'SELECT * FROM data';
+//   db.query(sql, (err, result) => {
+//   if (err) {
+//       console.error('Database error:', err);
+//       return callback(err, null);
+//   }
+//   console.log('Fetched data:', result);
+//   callback(null, result); // Return the ID of the newly inserted record
+// });
+// }
 
 module.exports = {
     addNewData,

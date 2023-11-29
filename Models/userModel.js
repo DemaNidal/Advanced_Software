@@ -1,8 +1,8 @@
 const db = require('../dbConnection');
 
-function addNewUser(name, pass, address, phone, alerts, sustainability, score, callback) {
-    const sql = 'INSERT INTO users (name, pass, address, phone, alerts, sustainability, score) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    db.query(sql, [name, pass, address, phone, alerts, sustainability, score], (err, result) => {
+function addNewUser(name, air_quality_threshold, temperature_threshold, humidity_threshold, water_quality_threshold, location, sustainability_score, callback) {
+    const sql = 'INSERT INTO users (name, air_quality_threshold, temperature_threshold, humidity_threshold, water_quality_threshold, location, sustainability_score) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    db.query(sql, [name, air_quality_threshold, temperature_threshold, humidity_threshold, water_quality_threshold, location, sustainability_score], (err, result) => {
         if (err) {
             console.error('Database error:', err);
             return callback(err, null);
