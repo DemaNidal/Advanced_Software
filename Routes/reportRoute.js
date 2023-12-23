@@ -4,10 +4,12 @@ const ReportController = require('../Controller/reportController');
 
 const router = express.Router();
 
-router.post('/add-report', ReportController.addReport);
-router.get('/all-reports', ReportController.getAllReports);
-router.get('/user-reports/:user_id', ReportController.getReportsByUserId);
-router.put('/update-report/:report_id', ReportController.updateReport);
-router.delete('/delete-report/:report_id', ReportController.deleteReport);
+router.post('/Reports', ReportController.addReport);
+
+router.get('/Reports', ReportController.getAllReports);
+router.get('/User_Reports/:user_id', ReportController.getReportsByUserId);
+
+router.put('/Reports/:id', ReportController.updateReport);
+router.delete('/Reports/:id', ReportController.deleteReport);
 
 module.exports = router;

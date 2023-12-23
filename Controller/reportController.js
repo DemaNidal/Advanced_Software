@@ -34,29 +34,45 @@ function getReportsByUserId(req, res) {
         res.status(200).json({ reports });
     });
 }
+
+
 function deleteReport(req, res) {
-    const report_id = req.params.report_id;
+    try{
+        const {id} = req.params;
+    
+        reportModel.deleteReport(id, (err, success) => {
+            if (err) {
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
 
-    reportModel.deleteReport(report_id, (err) => {
-        if (err) {
-            return res.status(500).json({ error: 'Internal Server Error' });
-        }
-
-        res.status(200).json({ message: 'Report deleted successfully' });
-    });
+            if (success) { 
+                res.status(204).json({ message: 'Report deleted successfully' });
+            } else {
+                res.status(404).json({ error: 'Data not found' });
+            }
+        });
+    }catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 }
+
+
 function updateReport(req, res) {
-    const report_id = req.params.report_id;
+    const {id} = req.params;
     const { description, issue_type, location, date_time } = req.body;
 
-    reportModel.updateReport(report_id, description, issue_type, location, date_time, (err) => {
+    reportModel.updateReport(id, description, issue_type, location, date_time, (err, success) => {
         if (err) {
             return res.status(500).json({ error: 'Internal Server Error' });
         }
 
-        res.status(200).json({ message: 'Report updated successfully' });
+        if (success) {
+            res.status(200).json({ id, message: 'Report updated successfully' });
+          } else {
+            res.status(404).json({ error: 'Data not found' });
+          }
     });
-}
+}    
 
 module.exports = {
     updateReport,

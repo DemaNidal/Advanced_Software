@@ -1,9 +1,9 @@
 // models/resourceModel.js
 const db = require('../dbConnection');
 
-function addResource(user_id, title, content, callback) {
-    const sql = 'INSERT INTO resources (user_id, title, content) VALUES (?, ?, ?)';
-    db.query(sql, [user_id, title, content], (err, result) => {
+function addResource(user_id, date_time, title, content, callback) {
+    const sql = 'INSERT INTO resources (user_id, date_time, title, content) VALUES (?, ?, ?, ?)';
+    db.query(sql, [user_id, date_time, title, content], (err, result) => {
         if (err) {
             console.error('Database error:', err);
             return callback(err, null);
@@ -34,14 +34,20 @@ function getResourcesByUserId(user_id, callback) {
     });
 }
 
-function updateResource(resource_id, title, content, callback) {
-    const sql = 'UPDATE resources SET title = ?, content = ? WHERE resource_id = ?';
-    db.query(sql, [title, content, resource_id], (err, result) => {
+function updateResource(id, date_time, title, content, callback) {
+    const sql = 'UPDATE resources SET date_time = ?, title = ?, content = ? WHERE resource_id = ?';
+
+    const values = [date_time, title, content, id];
+
+    // Check each parameter for undefined and replace with null
+    const sanitizedValues = values.map((val) => (val === undefined ? null : val));
+
+    db.query(sql, sanitizedValues , (err, result) => {
         if (err) {
             console.error('Database error:', err);
             return callback(err);
         }
-        return callback(null);
+        return callback(null, result.affectedRows > 0);
     });
 }
 
@@ -52,9 +58,10 @@ function deleteResource(resource_id, callback) {
             console.error('Database error:', err);
             return callback(err);
         }
-        return callback(null);
+        return callback(null, result.affectedRows > 0);
     });
 }
+
 
 module.exports = {
     addResource,

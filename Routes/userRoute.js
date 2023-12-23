@@ -4,8 +4,12 @@ const UserController = require('../Controller/userController');
 
 const router = express.Router();
 
-router.post('/add-user', UserController.addUser);
-router.get('/all-users', UserController.getAllUsers);
-router.get('/:id', UserController.getUser);
+router.post('/User', UserController.addUser);//add user
+
+router.get('/User', UserController.getAllUsers);//view all users
+router.get('/User/:id', UserController.getUser);//view a user
+
+router.put("/User/:id", UserController.editUser);//id here is the user id //edit user info
+router.delete("/User/:id", UserController.deleteUser);//delete user
 
 module.exports = router;

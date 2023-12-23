@@ -2,9 +2,9 @@
 const resourceModel = require('../Models/resourceModel');
 
 function addResource(req, res) {
-    const { user_id, title, content } = req.body;
+    const { user_id, date_time, title, content } = req.body;
 
-    resourceModel.addResource(user_id, title, content, (err, resource_id) => {
+    resourceModel.addResource(user_id, date_time, title, content, (err, resource_id) => {
         if (err) {
             return res.status(500).json({ error: 'Internal Server Error' });
         }
@@ -36,29 +36,50 @@ function getResourcesByUserId(req, res) {
 }
 
 function updateResource(req, res) {
-    const resource_id = req.params.resource_id;
-    const { title, content } = req.body;
+    try{
+        const { id } = req.params;
+        const { date_time, title, content } = req.body;
 
-    resourceModel.updateResource(resource_id, title, content, (err) => {
-        if (err) {
-            return res.status(500).json({ error: 'Internal Server Error' });
-        }
+        resourceModel.updateResource(id, date_time, title, content, (err, success) => {
+            if (err) {
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
 
-        res.status(200).json({ message: 'Resource updated successfully' });
-    });
+            if (success) {
+                res.status(200).json({ id, message: 'Data updated successfully' });
+              } else {
+                res.status(404).json({ error: 'Data not found' });
+              }
+        });
+
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+    
 }
 
-function deleteResource(req, res) {
-    const resource_id = req.params.resource_id;
-
-    resourceModel.deleteResource(resource_id, (err) => {
+async function deleteResource(req, res) {
+    try {
+        const {id} = req.params;
+      
+        resourceModel.deleteResource(id, (err, success) => {
         if (err) {
-            return res.status(500).json({ error: 'Internal Server Error' });
+          return res.status(500).json({ error: 'Internal Server Error' });
         }
-
-        res.status(200).json({ message: 'Resource deleted successfully' });
-    });
-}
+  
+        if (success) {
+          res.status(204).json({ message: 'Resource deleted successfully' });
+          //res.status(204).json({ message: 'data added successfully' });
+        } else {
+          res.status(404).json({ error: 'Data not found' });
+        }
+      });
+  
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+    
+  }
 
 module.exports = {
     addResource,

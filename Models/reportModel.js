@@ -68,24 +68,36 @@ function getReportsByUserId(user_id, callback) {
         return callback(null, userReports);
     });
 }
-function deleteReport(report_id, callback) {
+
+
+function deleteReport(id, callback) {
     const sql = 'DELETE FROM reports WHERE report_id = ?';
-    db.query(sql, [report_id], (err, result) => {
+
+    db.query(sql, [id], (err, result) => {
         if (err) {
             console.error('Database error:', err);
-            return callback(err);
+            return callback(err, null);
         }
-        return callback(null);
+        return callback(null, result.affectedRows > 0);
     });
 }
+
+
 function updateReport(report_id, description, issue_type, location, date_time, callback) {
+
     const sql = 'UPDATE reports SET description = ?, issue_type = ?, location = ?, date_time = ? WHERE report_id = ?';
-    db.query(sql, [description, issue_type, location, date_time, report_id], (err, result) => {
+
+    const values = [description, issue_type, location, date_time, report_id];
+     // Check each parameter for undefined and replace with null
+    const sanitizedValues = values.map((val) => (val === undefined ? null : val));
+
+    
+    db.query(sql, sanitizedValues, (err, result) => {
         if (err) {
             console.error('Database error:', err);
             return callback(err);
         }
-        return callback(null);
+        return callback(null, result.affectedRows > 0); 
     });
 }
 
