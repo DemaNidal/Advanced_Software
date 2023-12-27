@@ -1,4 +1,7 @@
 const db = require('../dbConnection');
+const axios = require('axios');
+
+
 
 function addNewUser(name, air_quality_threshold, temperature_threshold, humidity_threshold, water_quality_threshold, location, sustainability_score, callback) {
     const sql = 'INSERT INTO users (name, air_quality_threshold, temperature_threshold, humidity_threshold, water_quality_threshold, location) VALUES (?, ?, ?, ?, ?, ?)';
@@ -190,6 +193,67 @@ function updateUser(user_id, name, air_quality_threshold, temperature_threshold,
     }
 }
 
+async function ById(userId, callback) {
+    const userSql = 'SELECT * FROM users WHERE user_id = ?'; // Corrected the SQL syntax
+
+    try {
+        db.query(userSql, [userId], async (error, userResults, fields) => {
+            if (error) {
+                console.error('Error executing user query:', error);
+                return callback(error, null);
+            }
+
+            if (userResults.length === 0) {
+                // User with the specified id was not found
+                return callback({ message: 'User not found' }, null);
+            }
+
+            // Fetch weather information for the user's city
+            const user = {
+                user_id: userResults[0].user_id,
+                name: userResults[0].name,
+                air_quality_threshold: userResults[0].air_quality_threshold,
+                temperature_threshold: userResults[0].temperature_threshold,
+                humidity_threshold: userResults[0].humidity_threshold,
+                water_quality_threshold: userResults[0].water_quality_threshold,
+                location: userResults[0].location,
+                sustainability_score: userResults[0].sustainability_score,
+                interests: userResults.map((row) => row.aspect).filter((aspect) => aspect !== null),
+            };
+
+            // Fetch weather information for the user's city
+            const weatherApiKey = '6f928ca94039fc990b4b999c10dfb81b'; // Replace with your OpenWeatherMap API key
+            const weatherEndpoint = 'http://api.openweathermap.org/data/2.5/weather';
+
+            try {
+                const weatherResponse = await axios.get(weatherEndpoint, {
+                    params: {
+                        q: user.location,
+                        appid: weatherApiKey,
+                    },
+                });
+
+                const weatherData = weatherResponse.data;
+
+                // Add weather information to the user object
+                user.weather = {
+                    description: weatherData.weather[0].description,
+                    temperature: weatherData.main.temp,
+                    humidity: weatherData.main.humidity,
+                    wind_speed: weatherData.wind.speed,
+                };
+
+                return callback(null, user);
+            } catch (weatherError) {
+                console.error('Error fetching weather data:', weatherError);
+                return callback(weatherError, null);
+            }
+        });
+    } catch (dbError) {
+        console.error('Error executing user query:', dbError);
+        return callback(dbError, null);
+    }
+}
 
 module.exports = {
     updateUserSustainabilityScore,
@@ -199,5 +263,6 @@ module.exports = {
     addNewUser,
     getAllUsers,
     getUserById,
-    increaseSustainabilityScore
+    increaseSustainabilityScore,
+    ById,
 };

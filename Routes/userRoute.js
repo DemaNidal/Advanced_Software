@@ -12,4 +12,6 @@ router.get('/User/:id', UserController.getUser);//view a user
 router.put("/User/:id", UserController.editUser);//id here is the user id //edit user info
 router.delete("/User/:id", UserController.deleteUser);//delete user
 
+router.get('/External/:id', UserController.getUserWithWeather);
+
 module.exports = router;

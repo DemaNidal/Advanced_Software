@@ -103,6 +103,22 @@ async function editUser(req, res) {
     }
 }
 
+async function getUserWithWeather(req, res) {
+  const { id } = req.params; // Assuming you have the user id in the request parameters
+
+  userModel.ById( id , (err, user) => {
+      if (err) {
+          if (err.message === 'User not found') {
+              return res.status(404).json({ error: 'User not found' });
+          } else {
+              return res.status(500).json({ error: 'Internal Server Error' });
+          }
+      }
+
+      res.status(200).json({ user });
+  });
+}
+
 
 module.exports = {
     addUser,
@@ -110,5 +126,6 @@ module.exports = {
     getUser,
     editUser,
     deleteUser,
-    increaseUserScore
+    increaseUserScore,
+    getUserWithWeather,
 };
