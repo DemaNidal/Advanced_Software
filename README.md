@@ -28,7 +28,7 @@ npm install axios ejs express firebase-admin mysql2
 
 ## API Endpoints
 
-### 1. `/api/Data`
+### 1.`/api/Data`
 
 **Description:**
 This endpoint allows users to add data, view all data, view a specific data, edit data, delete data.
