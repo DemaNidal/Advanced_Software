@@ -7,8 +7,12 @@ RESTful APIs designed for environmental monitoring and reporting, providing deve
 - [Installation](#installation)
 - [API Endpoints](#api-endpoints)
    - [1. `/api/Data`](#1-api-data)
-   - [2. `/api/Users`](#2-api-users)
-   - [3. `/api/Reactions`](#3-api-reactions)
+   - [2. `/api/Users`](#2-api-users) 
+   - [3. `/api/Interest`](#3-api-interest)
+   - [4. `/api/Resources`](#4-api-resources) 
+   - [5. `/api/Reports`](#5-api-reports)
+   - [6. `/api/Reactions`](#6-api-reactions) 
+   - [7. `/api/Messages`](#7-api-messages) 
 - [Database](#database)
 - [Configuration](#configuration)
 - [Testing](#testing)
@@ -28,7 +32,7 @@ npm install axios ejs express firebase-admin mysql2
 
 ## API Endpoints
 
-### 1.`/api/Data`
+### 1. `/api/Data`
 
 **Description:**
 This endpoint allows users to add data, view all data, view a specific data, edit data, delete data.
