@@ -183,7 +183,6 @@ GET https://localhost:8080/api/Users
 **Method:** `GET`
 
 **Parameters:**
-
 `id`: user id to view the details of that user.
 
 **Example:**
@@ -227,7 +226,6 @@ PUT https://localhost:8080/api/Users/1 \
 **Method:** `DELETE`
 
 **Parameters:**
-
 `id`: user id to delete that user.
 
 **Example:**
@@ -261,7 +259,6 @@ POST https://localhost:8080/api/Interest \
 **Method:** `DELETE`
 
 **Parameters:**
-
 `id`: interest id to be deleted.
 
 **Example:**
@@ -276,6 +273,229 @@ DELETE https://localhost:8080/api/Interest/1
 This endpoint allows users to add Resources, view all Resources, edit Resources details, delete Resources.
 <!-- ............................................ -->
 
+**Method:** `POST`
+
+**Parameters:**
+
+`user_id` (number, required): the id of the user adding the resource.
+
+`date_time` (datetime, required): date and time of the resource.
+
+`title` (string, required):  title of the resource.
+
+`content` (text, required): content of the resource.
+
+**Example:**
+POST https://localhost:8080/api/Resources \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id":"1", 
+    "date_time":"2023-12-15T10:30:00",
+    "title":"title",
+    "content":"content"
+}'
+<!-- ............................................ -->
+
+**Method:** `GET`
+
+**Example:**
+GET https://localhost:8080/api/Resources
+<!-- ............................................ -->
+
+**Method:** `PUT`
+
+**Parameters:**
+`id` (number, required): the id of the resource to edit.
+
+`user_id` (number, required): the id of the user adding the resource.
+
+`date_time` (datetime, required): date and time of the resource.
+
+`title` (string, required):  title of the resource.
+
+`content` (text, required): content of the resource.
+
+**Example:**
+PUT https://localhost:8080/api/Resources/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id":"1", 
+    "date_time":"2023-12-15T10:30:00",
+    "title":"title",
+    "content":"content"
+}'
+<!-- ............................................ -->
+
+**Method:** `DELETE`
+
+**Parameters:**
+`id`: resource id to be deleted.
+
+**Example:**
+DELETE https://localhost:8080/api/Resources/1
+<!-- ............................................ -->
+
+<!-- ............................................................... -->
+
+### 5. `/api/Reports`
+
+**Description:**
+This endpoint allows users to add Report, view all Report, edit Report details, delete Report.
+<!-- ............................................ -->
+
+**Method:** `POST`
+
+**Parameters:**
+
+`user_id` (number, required): the id of the user adding the Report.
+
+`description` (text, required): content of the Report.
+
+`issue_type` (string, required): type of the issue being eeported.
+
+`location` (string, required): location of the reported issue.
+
+`date_time` (datetime, required): date and time of the Report.
+
+
+**Example:**
+POST https://localhost:8080/api/Reports \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id":"1", 
+    "description":"description",
+    "issue_type":"",
+    "location":"",
+    "date_time":"2023-12-15T10:30:00"
+}'
+<!-- ............................................ -->
+
+**Method:** `GET`
+
+**Example:**
+GET https://localhost:8080/api/Reports
+<!-- ............................................ -->
+
+**Method:** `PUT`
+
+**Parameters:**
+`id` (number, required): the id of the report to edit.
+
+`user_id` (number, required): the id of the user adding the Report.
+
+`description` (text, required): content of the Report.
+
+`issue_type` (string, required): type of the issue being eeported.
+
+`location` (string, required): location of the reported issue.
+
+`date_time` (datetime, required): date and time of the Report.
+
+
+**Example:**
+PUT https://localhost:8080/api/Reports/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id":"1", 
+    "description":"description",
+    "issue_type":"",
+    "location":"",
+    "date_time":"2023-12-15T10:30:00"
+}'
+<!-- ............................................ -->
+
+**Method:** `DELETE`
+
+**Parameters:**
+`id`: Report id to be deleted.
+
+**Example:**
+DELETE https://localhost:8080/api/Reports/1
+<!-- ............................................ -->
+
+
+<!-- ............................................................... -->
+
+### 6. `/api/Reactions`
+
+**Description:**
+This endpoint allows users to add Reactions, delete Reactions.
+<!-- ............................................ -->
+
+**Method:** `POST`
+
+**Parameters:**
+
+`report_id` (number, required): the id of the report the user reacted to.
+
+`data_id` (number, required): the id of the data the user reacted to.
+
+`resource_id` (number, required): the id of the resource the user reacted to.
+
+`attribute_name` (text, required)
+
+`user_id` (string, required): id of the user adding the reaction.
+
+
+**Example:**
+POST https://localhost:8080/api/Reactions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "report_id":"1",
+    "data_id":"2", 
+    "resource_id":"", 
+    "attribute_name":"", 
+    "user_id":"1"
+}'
+<!-- ............................................ -->
+
+**Method:** `DELETE`
+
+**Parameters:**
+`id`: Reaction id to be deleted.
+
+**Example:**
+DELETE https://localhost:8080/api/Reactions/1
+<!-- ............................................ -->
+
+### 7. `/api/Messages`
+
+**Description:**
+This endpoint allows users to add Messages, view all Messages. This endpoint utilizes Firebase Cloud Messaging (FCM) and the Firebase Admin SDK to enable real-time messaging capabilities.
+<!-- ............................................ -->
+
+**Method:** `POST`
+
+**Parameters:**
+
+`body` (text, required): content of the message.
+
+`from_user_Id` (number, required): id of the sender.
+
+`to_user_id` (number, required): id of the receiver.
+
+`timestamp` (datetime, required): date and time of the message.
+
+
+**Example:**
+POST https://localhost:8080/api/Messages \
+  -H "Content-Type: application/json" \
+  -d '{
+  "data": {
+    "body": "You have a new message from asma",
+    "messageId": "12345",
+    "from_user_Id": "1",
+    "to_user_id": "2",
+    "timestamp": "2023-01-01T12:00:00"
+  }
+}'
+<!-- ............................................ -->
+
+**Method:** `GET`
+
+**Example:**
+GET https://localhost:8080/api/Messages
+<!-- ............................................ -->
 
 
 
