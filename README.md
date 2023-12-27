@@ -32,9 +32,7 @@ This endpoint allows users to add data, view all data, view a specific data, edi
 
 <!-- ............................................ -->
 **Method:** `POST`
-
 **Parameters:**
-
 `user_id` (number, optional/required): the id of the user adding the data, its only optional if the source is a sensore.
 
 `date_time` (datetime, required): date and time of the data.
@@ -67,25 +65,19 @@ POST https://localhost:8080/api/Data \
 <!-- ............................................ -->
 
 **Method:** `GET`
-
 **Example:**
 GET https://localhost:8080/api/Data
 <!-- ............................................ -->
 
 **Method:** `GET`
-
 **Parameters:**
-
 `id`: Data id to view the details of that data.
-
 **Example:**
 GET https://localhost:8080/api/Data/1
 <!-- ............................................ -->
 
 **Method:** `PUT`
-
 **Parameters:**
-
 `id`: Data id to edit the details of that data.
 
 `user_id` (number, optional/required): the id of the user adding the data, its only optional if the 
