@@ -6,6 +6,9 @@ RESTful APIs designed for environmental monitoring and reporting, providing deve
 
 - [Installation](#installation)
 - [API Endpoints](#api-endpoints)
+   - [1. `/api/Data`](#1-api-data)
+   - [2. `/api/Users`](#2-api-users)
+   - [3. `/api/Reactions`](#3-api-reactions)
 - [Database](#database)
 - [Configuration](#configuration)
 - [Testing](#testing)
