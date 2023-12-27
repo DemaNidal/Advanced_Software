@@ -526,19 +526,14 @@ GET https://localhost:8080/api/Messages
 
 
 
-## Database
-
-...
-
-## Configuration
-
-...
-
-## Testing
-
-...
-
 ## Contributing
 
-...
+### Contributors
+
+individuals who have contributed to this project:
+[Asma Jehad](https://github.com/asmajehad20)
+[May Shelbayeh](https://github.com/Maishelbayeh)
+[Dema Khaili](https://github.com/DemaNidal)
+
+
 
