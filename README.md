@@ -16,7 +16,7 @@ RESTful APIs designed for environmental monitoring and reporting, providing deve
    - [8. `/api/User_Data`](#8-api-user-data)
    - [9. `/api/User_Reports`](#9-api-user-reports)
    - [10. `/api/User_Reactions`](#10-api-user-reactions)
-   - [11. `/api/User_User_Messages`](#11-api-user-messages)
+   - [11. `/api/User_Messages`](#11-api-user-messages)
    - [12. `/api/User_Interest`](#12-api-user-interest)
    - [13. `/api/User_Resources`](#13-api-user-resources)
    - [14. `/api/External`](#14-api-external)
@@ -529,6 +529,119 @@ POST https://localhost:8080/api/Messages \
 GET https://localhost:8080/api/Messages
 <!-- ............................................ -->
 
+<!-- ............................................................... -->
+### 8. `/api/User_Data`
+
+**Description:**
+This endpoint allows users to view data related to a user.
+<!-- ............................................ -->
+
+**Method:** `GET`
+
+**Parameters:**
+`id`: user id.
+
+**Example:**
+GET https://localhost:8080/api/User_Data/1
+<!-- ............................................ -->
+
+<!-- ............................................................... -->
+### 9. `/api/User_Reports`
+
+**Description:**
+This endpoint allows users to view reports related to a user.
+<!-- ............................................ -->
+
+**Method:** `GET`
+
+**Parameters:**
+`id`: user id.
+
+**Example:**
+GET https://localhost:8080/api/User_Reports/1
+<!-- ............................................ -->
+
+<!-- ............................................................... -->
+### 10. `/api/User_Reactions`
+
+**Description:**
+This endpoint allows users to view reactions made by a user.
+<!-- ............................................ -->
+**Method:** `GET`
+
+**Parameters:**
+`id`: user id.
+
+**Example:**
+GET https://localhost:8080/api/User_Reactions/1
+<!-- ............................................ -->
+
+<!-- ............................................................... -->
+### 11. `/api/User_Messages`
+
+**Description:**
+This endpoint allows users to view messages related to a user.
+<!-- ............................................ -->
+**Method:** `GET`
+
+**Parameters:**
+`id`: user id.
+
+**Example:**
+GET https://localhost:8080/api/User_Messages/1
+<!-- ............................................ -->
+
+
+<!-- ............................................................... -->
+### 12. `/api/User_Interest`
+
+**Description:**
+This endpoint allows users to view the interests related to a user.
+<!-- ............................................ -->
+**Method:** `GET`
+
+**Parameters:**
+`id`: user id.
+
+**Example:**
+GET https://localhost:8080/api/User_Interest/1
+<!-- ............................................ -->
+
+<!-- ............................................................... -->
+### 13. `/api/User_Resources`
+
+**Description:**
+This endpoint allows users to view resources related to a user.
+<!-- ............................................ -->
+
+**Method:** `GET`
+
+**Parameters:**
+`id`: user id.
+
+**Example:**
+GET https://localhost:8080/api/User_Resources/1
+<!-- ............................................ -->
+
+<!-- ............................................................... -->
+### 14. `/api/External`
+
+**Description:**
+This external endpoint takes the id of a user and gives them the weather informations in their location.
+<!-- ............................................ -->
+
+**Method:** `GET`
+
+**Parameters:**
+`id`: user id.
+
+**Example:**
+GET https://localhost:8080/api/External/1
+<!-- ............................................ -->
+<!-- ............................................................... -->
+
+
+<!-- ............................................ -->
 ## Testing
 
 For detailed testing instructions, please refer to the [Testing Guide PDF](https://drive.google.com/file/d/18h3wNPQrEkrQ635IFKAH_XgDs03paLiH/view?usp=sharing).
