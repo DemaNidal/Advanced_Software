@@ -7,7 +7,7 @@ RESTful APIs designed for environmental monitoring and reporting, providing deve
 - [Installation](#installation)
 - [API Endpoints](#api-endpoints)
    - [1. `/api/Data`](#1-api-data)
-   - [2. `/api/Users`](##2-api-users)
+   - [2. `/api/Users`](#2-api-users)
    - [3. `/api/Reactions`](#3-api-reactions)
 - [Database](#database)
 - [Configuration](#configuration)
@@ -59,14 +59,23 @@ This endpoint allows users to add data, view all data, view a specific data, edi
 POST https://localhost:8080/api/Data \
   -H "Content-Type: application/json" \
   -d '{
+  
     "user_id":"1",
+    
     "date_time":"2023-12-15T10:30:00",
+    
     "location":"japan",
+    
     "source":"user",
+    
     "air_quality":"1",
+    
     "temperature":"1",
+    
     "humidity":"1",
+    
     "water_quality":"1"
+    
 }'
 <!-- ............................................ -->
 
@@ -115,14 +124,23 @@ source is a sensore.
 PUT https://localhost:8080/api/Data/1 \
   -H "Content-Type: application/json" \
   -d '{
+  
     "user_id":"1",
+    
     "date_time":"2023-12-15T10:30:00",
+    
     "location":"japan",
+    
     "source":"user",
+    
     "air_quality":"1",
+    
     "temperature":"1",
+    
     "humidity":"1",
+    
     "water_quality":"1"
+    
 }'
 <!-- ............................................ -->
 
@@ -167,13 +185,21 @@ This endpoint allows users to add user, view all users, view a specific user, ed
 POST https://localhost:8080/api/Users \
   -H "Content-Type: application/json" \
   -d '{
+  
     "name":"asma",
+    
     "air_quality_threshold":"2",
+    
     "temperature_threshold":"2",
+    
     "humidity_threshold":"2",
+    
     "water_quality_threshold":"2",
+    
     "location":"japan",
+    
     "sustainability_score":""
+    
 }'
 <!-- ............................................ -->
 
@@ -216,13 +242,21 @@ GET https://localhost:8080/api/Users/1
 PUT https://localhost:8080/api/Users/1 \
   -H "Content-Type: application/json" \
   -d '{
+  
     "name":"asma",
+    
     "air_quality_threshold":"2",
+    
     "temperature_threshold":"2",
+    
     "humidity_threshold":"2",
+    
     "water_quality_threshold":"2",
+    
     "location":"japan",
+    
     "sustainability_score":""
+    
 }'
 <!-- ............................................ -->
 
@@ -292,10 +326,15 @@ This endpoint allows users to add Resources, view all Resources, edit Resources 
 POST https://localhost:8080/api/Resources \
   -H "Content-Type: application/json" \
   -d '{
+  
     "user_id":"1", 
+    
     "date_time":"2023-12-15T10:30:00",
+    
     "title":"title",
+    
     "content":"content"
+    
 }'
 <!-- ............................................ -->
 
@@ -322,10 +361,15 @@ GET https://localhost:8080/api/Resources
 PUT https://localhost:8080/api/Resources/1 \
   -H "Content-Type: application/json" \
   -d '{
+  
     "user_id":"1", 
+    
     "date_time":"2023-12-15T10:30:00",
+    
     "title":"title",
+    
     "content":"content"
+    
 }'
 <!-- ............................................ -->
 
@@ -365,11 +409,17 @@ This endpoint allows users to add Report, view all Report, edit Report details, 
 POST https://localhost:8080/api/Reports \
   -H "Content-Type: application/json" \
   -d '{
-    "user_id":"1", 
+  
+    "user_id":"1",
+    
     "description":"description",
+    
     "issue_type":"",
+    
     "location":"",
+    
     "date_time":"2023-12-15T10:30:00"
+    
 }'
 <!-- ............................................ -->
 
@@ -399,11 +449,17 @@ GET https://localhost:8080/api/Reports
 PUT https://localhost:8080/api/Reports/1 \
   -H "Content-Type: application/json" \
   -d '{
+  
     "user_id":"1", 
+    
     "description":"description",
+    
     "issue_type":"",
+    
     "location":"",
+    
     "date_time":"2023-12-15T10:30:00"
+    
 }'
 <!-- ............................................ -->
 
@@ -444,11 +500,17 @@ This endpoint allows users to add Reactions, delete Reactions.
 POST https://localhost:8080/api/Reactions \
   -H "Content-Type: application/json" \
   -d '{
+  
     "report_id":"1",
-    "data_id":"2", 
+    
+    "data_id":"2",
+    
     "resource_id":"", 
+    
     "attribute_name":"", 
+    
     "user_id":"1"
+    
 }'
 <!-- ............................................ -->
 
@@ -485,11 +547,17 @@ POST https://localhost:8080/api/Messages \
   -H "Content-Type: application/json" \
   -d '{
   "data": {
+  
     "body": "You have a new message from asma",
+    
     "messageId": "12345",
+    
     "from_user_Id": "1",
+    
     "to_user_id": "2",
+    
     "timestamp": "2023-01-01T12:00:00"
+    
   }
 }'
 <!-- ............................................ -->
