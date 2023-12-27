@@ -62,17 +62,11 @@ POST https://localhost:8080/api/Data \
   
     "user_id":"1",
     "date_time":"2023-12-15T10:30:00",
-    
     "location":"japan",
-    
     "source":"user",
-    
     "air_quality":"1",
-    
     "temperature":"1",
-    
-    "humidity":"1",
-    
+    "humidity":"1", 
     "water_quality":"1"
     
 }'
@@ -125,19 +119,12 @@ PUT https://localhost:8080/api/Data/1 \
   -d '{
   
     "user_id":"1",
-    
     "date_time":"2023-12-15T10:30:00",
-    
     "location":"japan",
-    
     "source":"user",
-    
     "air_quality":"1",
-    
     "temperature":"1",
-    
     "humidity":"1",
-    
     "water_quality":"1"
     
 }'
@@ -186,17 +173,11 @@ POST https://localhost:8080/api/Users \
   -d '{
   
     "name":"asma",
-    
     "air_quality_threshold":"2",
-    
     "temperature_threshold":"2",
-    
     "humidity_threshold":"2",
-    
     "water_quality_threshold":"2",
-    
     "location":"japan",
-    
     "sustainability_score":""
     
 }'
@@ -243,17 +224,11 @@ PUT https://localhost:8080/api/Users/1 \
   -d '{
   
     "name":"asma",
-    
     "air_quality_threshold":"2",
-    
     "temperature_threshold":"2",
-    
     "humidity_threshold":"2",
-    
     "water_quality_threshold":"2",
-    
     "location":"japan",
-    
     "sustainability_score":""
     
 }'
@@ -327,11 +302,8 @@ POST https://localhost:8080/api/Resources \
   -d '{
   
     "user_id":"1", 
-    
     "date_time":"2023-12-15T10:30:00",
-    
     "title":"title",
-    
     "content":"content"
     
 }'
@@ -362,11 +334,8 @@ PUT https://localhost:8080/api/Resources/1 \
   -d '{
   
     "user_id":"1", 
-    
     "date_time":"2023-12-15T10:30:00",
-    
     "title":"title",
-    
     "content":"content"
     
 }'
@@ -410,13 +379,9 @@ POST https://localhost:8080/api/Reports \
   -d '{
   
     "user_id":"1",
-    
     "description":"description",
-    
     "issue_type":"",
-    
     "location":"",
-    
     "date_time":"2023-12-15T10:30:00"
     
 }'
@@ -450,13 +415,9 @@ PUT https://localhost:8080/api/Reports/1 \
   -d '{
   
     "user_id":"1", 
-    
     "description":"description",
-    
     "issue_type":"",
-    
     "location":"",
-    
     "date_time":"2023-12-15T10:30:00"
     
 }'
@@ -501,13 +462,9 @@ POST https://localhost:8080/api/Reactions \
   -d '{
   
     "report_id":"1",
-    
     "data_id":"2",
-    
     "resource_id":"", 
-    
     "attribute_name":"", 
-    
     "user_id":"1"
     
 }'
@@ -548,13 +505,9 @@ POST https://localhost:8080/api/Messages \
   "data": {
   
     "body": "You have a new message from asma",
-    
     "messageId": "12345",
-    
     "from_user_Id": "1",
-    
     "to_user_id": "2",
-    
     "timestamp": "2023-01-01T12:00:00"
     
   }
