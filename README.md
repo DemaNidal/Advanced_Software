@@ -13,8 +13,6 @@ RESTful APIs designed for environmental monitoring and reporting, providing deve
    - [5. `/api/Reports`](#5-api-reports)
    - [6. `/api/Reactions`](#6-api-reactions) 
    - [7. `/api/Messages`](#7-api-messages) 
-- [Database](#database)
-- [Configuration](#configuration)
 - [Testing](#testing)
 - [Contributing](#contributing)
 
@@ -524,7 +522,9 @@ POST https://localhost:8080/api/Messages \
 GET https://localhost:8080/api/Messages
 <!-- ............................................ -->
 
+## Testing
 
+For detailed testing instructions, please refer to the [Testing Guide PDF]([link-to-your-pdf-file.pdf](https://drive.google.com/file/d/18h3wNPQrEkrQ635IFKAH_XgDs03paLiH/view?usp=sharing)).
 
 ## Contributing
 
