@@ -61,7 +61,6 @@ POST https://localhost:8080/api/Data \
   -d '{
   
     "user_id":"1",
-    
     "date_time":"2023-12-15T10:30:00",
     
     "location":"japan",
