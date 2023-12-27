@@ -34,13 +34,21 @@ This endpoint allows users to add data, view all data, view a specific data, edi
 **Method:** `POST`
 
 **Parameters:**
+
 `user_id` (number, optional/required): the id of the user adding the data, its only optional if the source is a sensore.
+
 `date_time` (datetime, required): date and time of the data.
+
 `location` (string, required): location of the data.
+
 `source` (string, optional/required): to indicate if the data is being recorded by a sensor or a user.
+
 `air_quality` (number, required): air_quality value.
+
 `temperature` (number, required): temperature value.
+
 `humidity` (number, required): humidity value.
+
 `water_quality` (number, required): water_quality value.
 
 **Example:**
@@ -59,28 +67,44 @@ POST https://localhost:8080/api/Data \
 <!-- ............................................ -->
 
 **Method:** `GET`
+
 **Example:**
 GET https://localhost:8080/api/Data
 <!-- ............................................ -->
 
 **Method:** `GET`
+
 **Parameters:**
+
 `id`: Data id to view the details of that data.
+
 **Example:**
 GET https://localhost:8080/api/Data/1
 <!-- ............................................ -->
 
 **Method:** `PUT`
+
 **Parameters:**
+
 `id`: Data id to edit the details of that data.
-`user_id` (number, optional/required): the id of the user adding the data, its only optional if the source is a sensore.
+
+`user_id` (number, optional/required): the id of the user adding the data, its only optional if the 
+source is a sensore.
+
 `date_time` (datetime, required): date and time of the data.
+
 `location` (string, required): location of the data.
+
 `source` (string, optional/required): to indicate if the data is being recorded by a sensor or a user.
+
 `air_quality` (number, required): air_quality value.
+
 `temperature` (number, required): temperature value.
+
 `humidity` (number, required): humidity value.
+
 `water_quality` (number, required): water_quality value.
+
 **Example:**
 PUT https://localhost:8080/api/Data/1 \
   -H "Content-Type: application/json" \
@@ -97,9 +121,13 @@ PUT https://localhost:8080/api/Data/1 \
 <!-- ............................................ -->
 
 **Method:** `DELETE`
+
 **Parameters:**
+
 `id`: Data id to delete that data.
+
 **Example:**
+
 DELETE https://localhost:8080/api/Data/1
 <!-- ............................................ -->
 
@@ -111,14 +139,23 @@ This endpoint allows users to add user, view all users, view a specific user, ed
 <!-- ............................................ -->
 
 **Method:** `POST`
+
 **Parameters:**
+
 `name` (string, required): name of user.
+
 `air_quality_threshold` (number, required): air_quality threshold value.
+
 `temperature_threshold` (number, required): temperature threshold value.
+
 `humidity_threshold` (number, required): humidity threshold value.
+
 `water_quality_threshold` (number, required): water_quality threshold value.
+
 `location` (string, required): location of the user.
+
 `sustainability_score` (number): score to measure a user's interactivity and helpfulness.
+
 **Example:**
 POST https://localhost:8080/api/Users \
   -H "Content-Type: application/json" \
@@ -134,28 +171,41 @@ POST https://localhost:8080/api/Users \
 <!-- ............................................ -->
 
 **Method:** `GET`
+
 **Example:**
 GET https://localhost:8080/api/Users
 <!-- ............................................ -->
 
 **Method:** `GET`
+
 **Parameters:**
+
 `id`: user id to view the details of that user.
+
 **Example:**
 GET https://localhost:8080/api/Users/1
 <!-- ............................................ -->
 
-
 **Method:** `PUT`
+
 **Parameters:**
+
 `id`: user id to edit the details of that user.
+
 `name` (string, required): name of user.
+
 `air_quality_threshold` (number, required): air_quality threshold value.
+
 `temperature_threshold` (number, required): temperature threshold value.
+
 `humidity_threshold` (number, required): humidity threshold value.
+
 `water_quality_threshold` (number, required): water_quality threshold value.
+
 `location` (string, required): location of the user.
+
 `sustainability_score` (number): score to measure a user's interactivity and helpfulness.
+
 **Example:**
 PUT https://localhost:8080/api/Users/1 \
   -H "Content-Type: application/json" \
@@ -171,8 +221,11 @@ PUT https://localhost:8080/api/Users/1 \
 <!-- ............................................ -->
 
 **Method:** `DELETE`
+
 **Parameters:**
+
 `id`: user id to delete that user.
+
 **Example:**
 DELETE https://localhost:8080/api/Users/1
 <!-- ............................................ -->
@@ -185,8 +238,11 @@ This endpoint allows users to specify their interests, enabling a more personali
 <!-- ............................................ -->
 
 **Method:** `POST`
+
 **Parameters:**
+
 `user_id` (number, required): the id of the user adding the interest.
+
 `interest_name` (string, required): name of the interest such as humidity, water_quality_threshold and so.
 
 **Example:**
@@ -199,8 +255,11 @@ POST https://localhost:8080/api/Interest \
 <!-- ............................................ -->
 
 **Method:** `DELETE`
+
 **Parameters:**
+
 `id`: interest id to be deleted.
+
 **Example:**
 DELETE https://localhost:8080/api/Interest/1
 <!-- ............................................ -->
