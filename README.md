@@ -32,6 +32,7 @@ This endpoint allows users to add data, view all data, view a specific data, edi
 
 <!-- ............................................ -->
 **Method:** `POST`
+
 **Parameters:**
 `user_id` (number, optional/required): the id of the user adding the data, its only optional if the source is a sensore.
 `date_time` (datetime, required): date and time of the data.
@@ -41,6 +42,7 @@ This endpoint allows users to add data, view all data, view a specific data, edi
 `temperature` (number, required): temperature value.
 `humidity` (number, required): humidity value.
 `water_quality` (number, required): water_quality value.
+
 **Example:**
 POST https://localhost:8080/api/Data \
   -H "Content-Type: application/json" \
