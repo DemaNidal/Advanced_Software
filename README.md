@@ -1,6 +1,6 @@
 # EcoTrack: Environmental Monitoring and Reporting Platform
 
-RESTful APIs designed for environmental monitoring and reporting, providing developers with a standardized interface to collect, analyze, and report on air quality, temperature, humidity, and other environmental parameters.
+RESTful APIs designed for environmental monitoring and reporting, using the Model-View-Controller (MVC) architectural pattern providing developers with a standardized interface to collect, analyze, and report on air quality, temperature, humidity, and other environmental parameters.
 
 ## Table of Contents
 
